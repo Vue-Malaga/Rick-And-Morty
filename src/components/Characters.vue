@@ -2,20 +2,23 @@
     <Header />
     <section class="search">
         <i class="fa-brands fa-searchengin"></i>
-        <input type="text" placeholder="Busca un personaje.." v-model="search">
+        <input type="text" placeholder="Busca un personaje.." v-model="search" @input="filterByName">
     </section>
     <section class="characters">
-        <Character v-for="character in characterByName" :key="character.id" :name="character.name"
-            :image="character.image" :specie="character.species" />
+        <RouterLink v-for="character in characters" :key="character.id"
+            :to="{ name: 'characterInfo', params: { id: character.id } }">
+            <Character :name="character.name" :image="character.image" :specie="character.species" />
+        </RouterLink>
     </section>
-    <section class="pagination">
-        <button @click="previous">Anterior</button>
-        <button @click="next">Siguiente</button>
+    <section class="pagination" v-if="search === ''">
+        <i class="fa-solid fa-arrow-left" @click="store.previousPage();"></i>
+        <i class="fa-solid fa-arrow-right" @click="store.nextPage()"></i>
     </section>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from '@vue/runtime-core';
+import { RouterLink } from 'vue-router';
 import { charactersStorage } from '../stores/characters.storage';
 import Header from './Header.vue';
 import Character from './Character.vue';
@@ -33,16 +36,9 @@ const characters = computed(() => {
 onMounted(() => {
     store.fetchCharacters();
 });
-const next = computed(() => {
-    store.nextPage();
-});
 
-const previous = computed(() => {
-    store.previousPage();
-});
-
-const characterByName = computed(() => {
-    return characters.value.filter(character => character.name.toLowerCase().includes(search.value.toLowerCase()));
+const filterByName = computed(() => {
+    store.filterByName(search.value);
 });
 </script>
 
@@ -61,13 +57,12 @@ section.search {
 
 section.pagination {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
 }
 
-section.pagination button {
-    border: none;
+section.pagination i {
     border-radius: 1rem;
     padding: 0.3rem 1rem;
     font-size: 1.5rem;
@@ -79,7 +74,7 @@ section.pagination button {
     transition: all 0.3s ease-in-out;
 }
 
-section.pagination button:hover {
+section.pagination i:hover {
     background-color: var(--white-color);
     color: var(--lime-color);
 }
@@ -100,9 +95,9 @@ section.search i {
 }
 
 section.characters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+
 }
 </style>
