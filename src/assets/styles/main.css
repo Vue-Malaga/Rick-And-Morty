@@ -1,0 +1,15 @@
+@import './base.css';
+
+:root{
+    --background-color: #161616;
+    --lime-color: #00ff00;
+    --white-color: #fff;
+}
+
+body{
+    background-color: var(--background-color);
+}
+
+a{
+    text-decoration: none;
+}
