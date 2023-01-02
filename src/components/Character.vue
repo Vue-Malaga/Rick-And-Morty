@@ -24,6 +24,9 @@ p.title {
     max-width: 230px;
     font-weight: 700;
     margin-bottom: .5rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 figure {
@@ -33,6 +36,11 @@ figure {
     display: inline-block;
     font-family: Lato, sans-serif;
     text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+figure:hover {
+    box-shadow: 0 0 0.5rem var(--white-color);
 }
 
 .img-container {
