@@ -21,6 +21,11 @@ export const charactersStorage = defineStore('characters',{
                 this.page--;
                 this.fetchCharacters();
             }
+        },
+        async filterByName(name){
+            const response = await get(`character/?name=${name}`);
+            const results = await response.results;
+            this.characters=results;
         }
     },
     getters:{
