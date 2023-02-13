@@ -1,6 +1,5 @@
 const API_URL = "https://rickandmortyapi.com/api";
-export const sendRequest = async (method, url="", body = null) => {
-    console.log(`Request info: method -> ${method}, url -> ${API_URL}/${url}`);
+export const sendRequest = (method, url="", body = null) => {
     return fetch(`${API_URL}/${url}`, {
         method,
         body,
