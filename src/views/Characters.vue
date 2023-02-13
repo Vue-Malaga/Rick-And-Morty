@@ -20,8 +20,8 @@
 import { ref, onMounted, computed } from '@vue/runtime-core';
 import { RouterLink } from 'vue-router';
 import { charactersStorage } from '../stores/characters.storage';
-import Header from './Header.vue';
-import Character from './Character.vue';
+import Header from '../components/Header.vue';
+import Character from '../components/Character.vue';
 const store = charactersStorage();
 const search = ref('');
 
