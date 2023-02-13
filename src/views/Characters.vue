@@ -19,18 +19,14 @@
 <script setup>
 import { ref, onMounted, computed } from '@vue/runtime-core';
 import { RouterLink } from 'vue-router';
-import { charactersStorage } from '../stores/characters.storage';
+import { useCharactersStore } from '../stores/characters.store';
 import Header from '../components/Header.vue';
 import Character from '../components/Character.vue';
-const store = charactersStorage();
+const store = useCharactersStore();
 const search = ref('');
 
-const getCharacters = computed(() => {
-    return store.getCharacters;
-});
-
 const characters = computed(() => {
-    return store.characters;
+    return store.getCharacters;
 })
 
 onMounted(() => {
