@@ -2,7 +2,7 @@
     <Header />
     <section class="search">
         <i class="fa-brands fa-searchengin"></i>
-        <input type="text" placeholder="Busca un personaje.." v-model="search" @input="filterByName">
+        <input type="text" placeholder="Search a character.." v-model="search" @input="filterByName">
     </section>
     <section class="characters">
         <RouterLink v-for="character in characters" :key="character.id"

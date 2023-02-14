@@ -3,7 +3,7 @@
         <RouterLink to="/characters">
             <div class="go-back">
                 <i class="fa-regular fa-hand-point-left"></i>
-                <span>Volver</span>
+                <span>Go back</span>
             </div>
         </RouterLink>
         <section>
@@ -14,14 +14,14 @@
                 <figcaption>
                     <h2>{{ character.name }}</h2>
 
-                    <p><strong>Especie:</strong> {{ character.species }}</p>
+                    <p><strong>Specie:</strong> {{ character.species }}</p>
                     <p><strong>Origen:</strong> {{ origin.name }}</p>
                     <p><strong>Dimension:</strong> {{ origin.dimension }}</p>
-                    <p><strong>Tipo de dimesion:</strong> {{ origin.type }}</p>
+                    <p><strong>Type of dimesion:</strong> {{ origin.type }}</p>
                 </figcaption>
             </figure>
             <div class="chapters">
-                <h2>Aparece los capitulos:</h2>
+                <h2>Appears in chapters:</h2>
                 <span v-for="episode in episodes" :key="episode">{{ episode }}</span>
             </div>
         </section>
@@ -48,9 +48,9 @@ onMounted(async () => {
     console.log(originUrl);
     if (!originUrl) {
         origin.value = {
-            name: 'Desconocido',
-            dimension: 'Desconocido',
-            type: 'Desconocido',
+            name: 'Unknown',
+            dimension: 'Unknown',
+            type: 'Unknown',
         };
         return;
     } else {

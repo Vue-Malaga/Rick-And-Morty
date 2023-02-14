@@ -5,7 +5,7 @@
         </div>
         <figcaption>
             <p class="title">{{ name }}</p>
-            <p><strong>Especie:</strong> {{ specie }}</p>
+            <p><strong>Specie:</strong> {{ specie }}</p>
         </figcaption>
     </figure>
 </template>
