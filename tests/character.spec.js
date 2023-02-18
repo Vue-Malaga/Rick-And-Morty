@@ -21,6 +21,7 @@ describe('Character.vue', () => {
             }
         });
 
-        expect(wrapper.props().name).toBe(mockProps.name);
+        expect(wrapper.find('p').text()).toBe(mockProps.name);
+        expect(wrapper.find('img').attributes('src')).toBe(mockProps.image);
     });
 });
