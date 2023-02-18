@@ -9,6 +9,6 @@ jobs:
       - id: Build-Vue
         uses: xRealNeon/VuePagesAction@1.0.1
         with:
-          username: "ImOnlyYisus"
+          username: "Vue-Malaga"
           reponame: "Rick-And-Morty"
           token: ${{ secrets.GITHUB_TOKEN }}
