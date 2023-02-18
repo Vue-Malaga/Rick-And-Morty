@@ -1,18 +1,35 @@
 import Home from "@/views/Home.vue";
-import { describe, expect, it, test } from "vitest";
-import { mount } from "@vue/test-utils";
+import { mount, shallowMount, RouterLinkStub } from "@vue/test-utils";
 
 vi.mock("vue-router");
 
-test("Home.vue exists", () => {
-    expect(Home).toBeTruthy();
-});
-
-test("Home.vue has a title", () => {
-    const wrapper = mount(Home, {
-        global: {
-            stubs: ["router-link", "router-view"],
-        },
+describe("Home.vue", () => {
+    test("exists", () => {
+        const wrapper = mount(Home);
+        expect(wrapper.exists()).toBe(true);
     });
-    expect(wrapper.find("h1").text()).toBe("Hello World");
+
+    test("has a title", () => {
+        const wrapper = shallowMount(Home, {
+            global: {
+                stubs: {
+                    RouterLink: RouterLinkStub,
+                },
+            },
+        });
+
+        expect(wrapper.find("h1").text()).toBe("- Show all characters -");
+    });
+
+    test("RouterLink points to correct route", () => {
+        const wrapper = shallowMount(Home, {
+            global: {
+                stubs: {
+                    RouterLink: RouterLinkStub,
+                },
+            },
+        });
+
+        expect(wrapper.findComponent(RouterLinkStub).props().to).toBe("/characters");
+    });
 });
