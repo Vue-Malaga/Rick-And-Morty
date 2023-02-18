@@ -1,4 +1,4 @@
-import Home from "@/views/Home.vue";
+import Home from "../views/Home.vue";
 import { mount, shallowMount, RouterLinkStub } from "@vue/test-utils";
 
 vi.mock("vue-router");
