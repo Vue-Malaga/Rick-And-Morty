@@ -8,8 +8,9 @@ export default mergeConfig(
         test: {
             environment: "jsdom",
             globals: true,
-            reporters: 'vitest-sonar-reporter',
-            outputFile: './coverage/sonar-report.xml',
+            coverage: {
+                reporter: ['text', 'lcov'],
+            }
         },
     })
 );
