@@ -2,12 +2,11 @@
     <figure>
         <img src="../assets/images/rick-and-morty.png" alt="">
         <RouterLink to="/characters">
-            <h1>Show all characters</h1>
+            <h1>- Show all characters -</h1>
         </RouterLink>
         <audio src="../assets/sounds/rickandmorty-theme.mp3" autoplay loop></audio>
     </figure>
     <div class="background"></div>
-
 </template>
 
 <script setup>
