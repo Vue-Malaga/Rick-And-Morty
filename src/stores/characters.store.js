@@ -34,6 +34,11 @@ export const useCharactersStore = defineStore("characters", () => {
 
     const getPage = computed(() => page.value);
 
+    // Only for testing purposes
+    const setPage = (newPage) => {
+        page.value = newPage;
+    };
+
     return {
         fetchCharacters,
         nextPage,
@@ -41,5 +46,6 @@ export const useCharactersStore = defineStore("characters", () => {
         filterByName,
         getCharacters,
         getPage,
+        setPage,
     };
 });
