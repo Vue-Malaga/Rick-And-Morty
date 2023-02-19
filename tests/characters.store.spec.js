@@ -19,26 +19,26 @@ describe("useCharactersStore", () => {
         expect(store.getCharacters).not.toEqual([]);
     });
 
-    test("updates page on next page", async () => {
+    test("updates page on next page", () => {
         const store = useCharactersStore();
         const initialPage = store.getPage;
-        await store.nextPage();
+        store.nextPage();
         expect(store.getPage).toEqual(initialPage + 1);
     });
 
-    test("does not update page below 1 on previous page", async () => {
+    test("does not update page below 1 on previous page", () => {
         const store = useCharactersStore();
         store.setPage(1);
         const initialPage = store.getPage;
-        await store.previousPage();
+        store.previousPage();
         expect(store.getPage).toEqual(initialPage);
     });
 
-    test("updates page above 1 on previous page", async () => {
+    test("updates page above 1 on previous page", () => {
         const store = useCharactersStore();
         store.setPage(2);
         const initialPage = store.getPage;
-        await store.previousPage();
+        store.previousPage();
         expect(store.getPage).toEqual(initialPage - 1);
     });
 });
