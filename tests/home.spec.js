@@ -18,7 +18,7 @@ describe("Home.vue", () => {
             },
         });
 
-        expect(wrapper.find("h1").text()).toBe("- Show all characters -");
+        expect(wrapper.find("h1").text()).toBe("Show all characters");
     });
 
     test("RouterLink points to correct route", () => {
@@ -30,6 +30,8 @@ describe("Home.vue", () => {
             },
         });
 
-        expect(wrapper.findComponent(RouterLinkStub).props().to).toBe("/characters");
+        expect(wrapper.findComponent(RouterLinkStub).props().to).toBe(
+            "/characters"
+        );
     });
 });
