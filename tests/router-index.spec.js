@@ -53,6 +53,6 @@ describe("Router", () => {
             },
         });
         await flushPromises();
-        expect(wrapper.text()).toContain("Show all characters");
+        expect(wrapper.text()).toContain(" Show all characters");
     });
 });
