@@ -17,7 +17,7 @@ describe("Router", () => {
             },
         });
         await flushPromises();
-        expect(wrapper.text()).toContain("- Show all characters -");
+        expect(wrapper.text()).toContain("Show all characters");
     });
 
     it('should render Characters component when visiting "/characters" route', async () => {
@@ -53,6 +53,6 @@ describe("Router", () => {
             },
         });
         await flushPromises();
-        expect(wrapper.text()).toContain("- Show all characters -");
+        expect(wrapper.text()).toContain("Show all characters");
     });
 });
