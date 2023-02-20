@@ -1,0 +1,42 @@
+name: Sonar CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: npm i
+      - name: Run Coverage
+        run: npm run test:coverage
+
+  build_vue:
+    runs-on: ubuntu-latest
+    name: Build Vue
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - id: Build-Vue
+        uses: xRealNeon/VuePagesAction@1.0.1
+        with:
+          username: "Vue-Malaga"
+          reponame: "Rick-And-Morty"
+          token: ${{ secrets.GITHUB_TOKEN }}
