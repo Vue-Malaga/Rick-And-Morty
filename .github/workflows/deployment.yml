@@ -25,7 +25,7 @@ jobs:
       - name: Run Coverage
         run: npm run test:coverage
       - name: Save coverage results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: coverage
@@ -35,7 +35,7 @@ jobs:
     name: Build Vue
     needs: test
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: Build-Vue
         uses: xRealNeon/VuePagesAction@1.0.1
         with:
@@ -53,7 +53,7 @@ jobs:
           with:
             fetch-depth: 0
         - name: Get coverage results
-          uses: actions/download-artifact@v2
+          uses: actions/download-artifact@v3
         - name: SonarCloud Scan
           uses: SonarSource/sonarcloud-github-action@master
           env:
